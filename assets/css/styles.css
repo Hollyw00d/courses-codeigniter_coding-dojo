@@ -1,0 +1,33 @@
+/****** Custom Styles ******/
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 960px;
+    padding: 0 20px;
+}
+
+
+
+#add-course span {
+    display: inline-block;
+    width: 100px;
+}
+
+#add-course textarea {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: 80px;
+}
+
+#add-course input[type=text] {
+    width: 200px;
+}
+
+#add-course input[type=submit] {
+    display: inline-block;
+    margin: 0 0 0 99px;
+}
