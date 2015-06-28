@@ -13,13 +13,18 @@
 
     <h2>Add a New Course</h2>
 
+    <?php // Start CodeIgniter Form ?>
+    <?php echo form_open(base_url() . 'courses/add', $form['attributes']) ; ?>
+
+        <p><span><?php echo form_label($form['name']['label']['text'], $form['name']['label']['for']);?></span><?php echo form_input('name');?></p>
+
+        <p><span><?php echo form_label($form['description']['label']['text'], $form['description']['label']['for']);?></span><?php echo form_textarea('description'); ?></p>
+
+    <p><?php echo form_submit('submit', 'Add Course') ?></p>
 
 
-    <form action="courses/add" method="post" id="add-course">
-        <p><span>Name:</span><input type="text" name="name"/></p>
-        <p><span>Description:</span><textarea name="description" id=""></textarea></p>
-        <p><input type="submit" value="Add"/></p>
-    </form>
+    <?php echo form_close() ; ?>
+    <?php // End CodeIgniter Form ?>
 
     <h2>Courses</h2>
 
