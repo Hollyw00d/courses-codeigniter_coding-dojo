@@ -13,18 +13,37 @@
 
     <h2>Add a New Course</h2>
 
-    <?php // Start CodeIgniter Form ?>
-    <?php echo form_open(base_url() . 'courses/add', $form['attributes']) ; ?>
+    <?php
+    // Load the form helper
+    $this->load->helper('form');
+    // Load the form_validation library
+    $this->load->library('form_validation');
 
-        <p><span><?php echo form_label($form['name']['label']['text'], $form['name']['label']['for']);?></span><?php echo form_input('name');?></p>
+    // Start CodeIgniter Form
+    echo form_open(base_url() . 'courses/add', 'id="add-course"');
 
-        <p><span><?php echo form_label($form['description']['label']['text'], $form['description']['label']['for']);?></span><?php echo form_textarea('description'); ?></p>
+        // Array to pass into form_input() below
+        $name = array(
+            'name' => 'name'
+        );
+        echo '<p>' . form_label('<span>Name: </span>', 'name') . form_input($name) . '</p>';
 
-    <p><?php echo form_submit('submit', 'Add Course') ?></p>
+        // Array to pass into form_textarea() below
+        $description = array(
+            'name' => 'description'
+        );
+        echo '<p>' . form_label('<span>Description: </span>', 'description') . form_textarea($description) . '</p>';
 
+        // Array to pass into form_submit() below
+        $add_class = array(
+            'name' => 'add_class',
+            'value' => 'Add Class'
+        );
+        echo '<p>' . form_submit($add_class) . '</p>';
 
-    <?php echo form_close() ; ?>
-    <?php // End CodeIgniter Form ?>
+    echo form_close() ;
+    // End CodeIgniter Form
+    ?>
 
     <h2>Courses</h2>
 
