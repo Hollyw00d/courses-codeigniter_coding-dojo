@@ -43,8 +43,7 @@ class Courses extends CI_Controller
             $message = '<p><strong>You have successfully added a class and description to the database!</strong></p>';
             $this->session->set_userdata('success_message', $message);
 
-            // Pass success message array to view
-            $this->load->view('courses_form/form.php');
+            redirect(base_url());
         }
 
     }
@@ -53,19 +52,18 @@ class Courses extends CI_Controller
     {
 
         $this->Course->delete_course($course_id);
-
         $this->delete_course = $delete_course['query_delete_course'] = $this->Course->delete_course($course_id);
-
-        if($this->input->post($course_id))
-        {
-            echo 'You have decided to delete course' . $course_id;
-            die();
-        }
-
 
         $this->load->view('courses_form/deleteconfirm');
 
+        if($this->input->post('delete_single_record'))
+        {
+            $this->Course->execute_delete_course($course_id);
+            redirect(base_url());
+        }
+
     }
+
 
 }
 ?>

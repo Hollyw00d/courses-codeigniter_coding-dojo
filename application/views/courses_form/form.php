@@ -51,6 +51,7 @@
     <table id="courses">
         <thead>
             <tr>
+                <th>Course ID</th>
                 <th>Course Name</th>
                 <th>Description</th>
                 <th>Date Added</th>
@@ -59,9 +60,10 @@
         </thead>
         <tbody>
             <?php
-                foreach($this->courses as $row)
+                foreach(array_reverse($this->courses) as $row)
                 {
                     echo '<tr>';
+                        echo '<td>' . $row->id . '</td>';
                         echo '<td>' . $row->name . '</td>';
                         echo '<td>' . $row->description . '</td>';
                         echo '<td>' . $row->created_at . '</td>';
