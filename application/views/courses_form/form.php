@@ -1,13 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Courses - Coding Dojo CodeIgniter Assignment</title>
-    <link rel="stylesheet" type="text/css" href="/assets/css/styles.css"/>
-</head>
-<body>
-
-<div id="wrapper">
+<?php $this->load->view('courses_form/includes/header.php'); ?>
 
     <h1>Courses - Coding Dojo CodeIgniter Assignment</h1>
 
@@ -57,7 +48,7 @@
 
     <h2>Courses</h2>
 
-    <table>
+    <table id="courses">
         <thead>
             <tr>
                 <th>Course Name</th>
@@ -67,32 +58,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
             <?php
                 foreach($this->courses as $row)
                 {
-                    echo '<td>' . $row->name . '</td>';
-                    echo '<td>' . $row->description . '</td>';
-                    echo '<td>' . $row->created_at . '</td>';
-                    echo '<td>
-                            <form>
-                                <input type="hidden" name="delete" value="' . $row->id . '" />
-                                <input type="submit" value="Delete Record" />
-                            </form>
-                    </td>';
+                    echo '<tr>';
+                        echo '<td>' . $row->name . '</td>';
+                        echo '<td>' . $row->description . '</td>';
+                        echo '<td>' . $row->created_at . '</td>';
+                        echo '<td>
+                                <form action="' . base_url() . 'courses/destroy/' . $row->id .  '" method="post">
+                                    <input type="hidden" name="delete" value="' . $row->id . '" />
+                                    <input type="submit" value="Delete Record" />
+                                </form>
+                        </td>';
+                    echo '</tr>';
                 }
                 ?>
-            </tr>
         </tbody>
     </table>
 
     <p>&nbsp;</p>
     <p><strong><a href="<?php echo base_url(); ?>reset">Destroy Session</a></strong></p>
 
-
-</div>
-
-
-
-</body>
-</html>
+<?php $this->load->view('courses_form/includes/footer.php'); ?>

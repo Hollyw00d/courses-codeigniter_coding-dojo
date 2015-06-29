@@ -10,10 +10,15 @@ class Course extends CI_Model
 
     function add_course($course)
     {
-        $query = "INSERT INTO courses (name, description, created_at, updated_at) VALUES (?,?,?,?)";
-        $values = array($course['name'], $course['description'], NOW(), NOW());
-        return $this->db->query($query, $values);
+
+        $insert_query = "INSERT INTO course (name, description, created_at, updated_at) VALUES (?,?,NOW(),NOW())";
+
+        $insert_values = array($course['name'], $course['description']);
+
+        return $this->db->query($insert_query, $insert_values);
     }
+
+    
 
 
 

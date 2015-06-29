@@ -35,16 +35,27 @@ class Courses extends CI_Controller
         }
         else
         {
+
+            // Run the model method below to insert course
+            $this->Course->add_course($this->input->post());
+
             // Success message
             $message = '<p><strong>You have successfully added a class and description to the database!</strong></p>';
             $this->session->set_userdata('success_message', $message);
 
-            // Load model
-            $this->load->model('Course');
-
             // Pass success message array to view
-            $this->load->view('courses_form/form.php', $this->courses);
+            $this->load->view('courses_form/form.php');
         }
+
+    }
+
+    public function destroy($course_id)
+    {
+
+
+
+
+        $this->load->view('courses_form/deleteconfirm');
 
     }
 
