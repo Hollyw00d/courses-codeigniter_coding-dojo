@@ -5,12 +5,18 @@ class Courses extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // Load model
+        $this->load->model('Course');
+
+        // Call the get_all_course model method
+        $this->courses = $courses['query_all'] = $this->Course->get_all_courses();
+
         $this->output->enable_profiler();
     }
 
     public function index()
     {
-        $this->load->view('courses_form/form.php');
+        $this->load->view('courses_form/form.php', $this->courses);
     }
 
     public function add()
@@ -25,7 +31,7 @@ class Courses extends CI_Controller
 
         if($this->form_validation->run() == FALSE)
         {
-            $this->load->view('courses_form/form.php');
+            $this->load->view('courses_form/form.php', $this->courses);
         }
         else
         {
@@ -33,8 +39,11 @@ class Courses extends CI_Controller
             $message = '<p><strong>You have successfully added a class and description to the database!</strong></p>';
             $this->session->set_userdata('success_message', $message);
 
+            // Load model
+            $this->load->model('Course');
+
             // Pass success message array to view
-            $this->load->view('courses_form/form.php');
+            $this->load->view('courses_form/form.php', $this->courses);
         }
 
     }

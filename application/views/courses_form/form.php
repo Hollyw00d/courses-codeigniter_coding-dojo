@@ -57,6 +57,34 @@
 
     <h2>Courses</h2>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <?php
+                foreach($this->courses as $row)
+                {
+                    echo '<td>' . $row->name . '</td>';
+                    echo '<td>' . $row->description . '</td>';
+                    echo '<td>' . $row->created_at . '</td>';
+                    echo '<td>
+                            <form>
+                                <input type="hidden" name="delete" value="' . $row->id . '" />
+                                <input type="submit" value="Delete Record" />
+                            </form>
+                    </td>';
+                }
+                ?>
+            </tr>
+        </tbody>
+    </table>
 
     <p>&nbsp;</p>
     <p><strong><a href="<?php echo base_url(); ?>reset">Destroy Session</a></strong></p>
