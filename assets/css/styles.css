@@ -47,7 +47,16 @@ body {
     padding: 10px;
 }
 
+.delete-table input {
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-size: 20px;
+}
 
+.delete-table .no-border {
+    border: none !important;
+}
 
 
 

@@ -52,7 +52,15 @@ class Courses extends CI_Controller
     public function destroy($course_id)
     {
 
+        $this->Course->delete_course($course_id);
 
+        $this->delete_course = $delete_course['query_delete_course'] = $this->Course->delete_course($course_id);
+
+        if($this->input->post($course_id))
+        {
+            echo 'You have decided to delete course' . $course_id;
+            die();
+        }
 
 
         $this->load->view('courses_form/deleteconfirm');
