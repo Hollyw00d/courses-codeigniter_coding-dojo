@@ -52,18 +52,19 @@ class Courses extends CI_Controller
     {
 
         $this->Course->delete_course($course_id);
-        $this->delete_course = $delete_course['query_delete_course'] = $this->Course->delete_course($course_id);
-
+        $this->delete_course = $this->Course->delete_course($course_id);
         $this->load->view('courses_form/deleteconfirm');
 
+    }
+
+    public function deleterecord($course_id)
+    {
         if($this->input->post('delete_single_record'))
         {
             $this->Course->execute_delete_course($course_id);
             redirect(base_url());
         }
-
     }
-
 
 }
 ?>

@@ -31,7 +31,7 @@
                             </form>'
                     . '</td>';
                 echo '<td colspan="2" class="no-border">'
-                    . '<form action="'. base_url() . 'courses/destroy/' . $row->id . '" method="post">
+                    . '<form action="'. base_url() . 'courses/deleterecord/' . $row->id . '" method="post">
                                 <input type="hidden" name="delete_single_record" value="delete_single_record" />
                                 <input type="submit" value="Yes, I want to delete this course!" />
                             </form>'
