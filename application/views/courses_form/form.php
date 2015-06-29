@@ -19,18 +19,28 @@
     // Load the form_validation library
     $this->load->library('form_validation');
 
+    // Show form validation errors if they exist
+    echo '<div class="error">' . validation_errors() . '</div>';
+
+    // Show the success message if it exists
+    echo '<div class="success">' . $this->session->userdata('success_message') . '</div>';
+    // Unset success message session if needed
+    $this->session->unset_userdata('success_message');
+
     // Start CodeIgniter Form
     echo form_open(base_url() . 'courses/add', 'id="add-course"');
 
         // Array to pass into form_input() below
         $name = array(
-            'name' => 'name'
+            'name' => 'name',
+            'value' => set_value('name')
         );
         echo '<p>' . form_label('<span>Name: </span>', 'name') . form_input($name) . '</p>';
 
         // Array to pass into form_textarea() below
         $description = array(
-            'name' => 'description'
+            'name' => 'description',
+            'value' => set_value('description')
         );
         echo '<p>' . form_label('<span>Description: </span>', 'description') . form_textarea($description) . '</p>';
 
