@@ -58,6 +58,10 @@
     <h2>Courses</h2>
 
 
+    <p>&nbsp;</p>
+    <p><strong><a href="<?php echo base_url(); ?>reset">Destroy Session</a></strong></p>
+
+
 </div>
 
 

@@ -37,10 +37,6 @@ class Courses extends CI_Controller
             $this->load->view('courses_form/form.php');
         }
 
-
-
-
-
     }
 
 }
