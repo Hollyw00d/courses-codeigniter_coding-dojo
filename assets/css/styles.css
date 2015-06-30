@@ -1,0 +1,63 @@
+/****** Custom Styles ******/
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 960px;
+    padding: 0 20px;
+}
+
+#add-course span {
+    display: inline-block;
+    width: 100px;
+}
+
+#add-course textarea {
+    display: inline-block;
+    vertical-align: top;
+    width: 200px;
+    height: 80px;
+}
+
+#add-course input[type=text] {
+    width: 200px;
+}
+
+#add-course input[type=submit] {
+    display: inline-block;
+    margin: 0 0 0 99px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+#courses {
+    border-collapse: collapse;
+}
+
+#courses th, #courses td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.delete-table input {
+    display: block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.delete-table .no-border {
+    border: none !important;
+}
+
+
+
+
