@@ -17,34 +17,15 @@
     echo '<div class="success">' . $this->session->userdata('success_message') . '</div>';
     // Unset success message session if needed
     $this->session->unset_userdata('success_message');
-
-    // Start CodeIgniter Form
-    echo form_open(base_url() . 'courses/add', 'id="add-course"');
-
-        // Array to pass into form_input() below
-        $name = array(
-            'name' => 'name',
-            'value' => set_value('name')
-        );
-        echo '<p>' . form_label('<span>Name: </span>', 'name') . form_input($name) . '</p>';
-
-        // Array to pass into form_textarea() below
-        $description = array(
-            'name' => 'description',
-            'value' => set_value('description')
-        );
-        echo '<p>' . form_label('<span>Description: </span>', 'description') . form_textarea($description) . '</p>';
-
-        // Array to pass into form_submit() below
-        $add_class = array(
-            'name' => 'add_class',
-            'value' => 'Add Class'
-        );
-        echo '<p>' . form_submit($add_class) . '</p>';
-
-    echo form_close() ;
-    // End CodeIgniter Form
     ?>
+
+    <form action="<?php echo base_url() . 'courses/add'; ?>" id="add-course" method="post">
+        <p><label for="name"><span>Name: </span></label><input type="text" name="name" value="<?php echo set_value('name') ?>"/></p>
+
+        <p><label for="description"><span>Description: </span></label><textarea name="description"><?php echo set_value('description'); ?></textarea></p>
+
+        <p><input type="submit" name="add_class" value="Add Class"></p>
+    </form>
 
     <h2>Courses</h2>
 
