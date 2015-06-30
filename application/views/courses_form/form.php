@@ -60,16 +60,16 @@
         </thead>
         <tbody>
             <?php
-                foreach(array_reverse($this->courses) as $row)
+                foreach(array_reverse($courses) as $row)
                 {
                     echo '<tr>';
-                        echo '<td>' . $row->id . '</td>';
-                        echo '<td>' . $row->name . '</td>';
-                        echo '<td>' . $row->description . '</td>';
-                        echo '<td>' . $row->created_at . '</td>';
+                        echo '<td>' . $row['id'] . '</td>';
+                        echo '<td>' . $row['name'] . '</td>';
+                        echo '<td>' . $row['description'] . '</td>';
+                        echo '<td>' . $row['created_at'] . '</td>';
                         echo '<td>
-                                <form action="' . base_url() . 'courses/destroy/' . $row->id .  '" method="post">
-                                    <input type="hidden" name="delete" value="' . $row->id . '" />
+                                <form action="' . base_url() . 'courses/destroy/' . $row['id'] .  '" method="post">
+                                    <input type="hidden" name="delete" value="' . $row['id'] . '" />
                                     <input type="submit" value="Delete Record" />
                                 </form>
                         </td>';

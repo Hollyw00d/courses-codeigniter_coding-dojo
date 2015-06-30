@@ -1,7 +1,6 @@
 <?php
 class Courses extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -9,14 +8,12 @@ class Courses extends CI_Controller
         $this->load->model('Course');
 
         // Call the get_all_course model method
-        $this->courses = $courses['query_all'] = $this->Course->get_all_courses();
-
-        $this->output->enable_profiler();
+        $this->courses = $this->Course->get_all_courses();
     }
 
     public function index()
     {
-        $this->load->view('courses_form/form.php', $this->courses);
+        $this->load->view('courses_form/form.php', array('courses' => $this->courses));
     }
 
     public function add()
@@ -31,11 +28,10 @@ class Courses extends CI_Controller
 
         if($this->form_validation->run() == FALSE)
         {
-            $this->load->view('courses_form/form.php', $this->courses);
+            $this->load->view('courses_form/form.php', array('courses' => $this->courses));
         }
         else
         {
-
             // Run the model method below to insert course
             $this->Course->add_course($this->input->post());
 
@@ -50,21 +46,20 @@ class Courses extends CI_Controller
 
     public function destroy($course_id)
     {
+        $delete_course = $this->Course->delete_course($course_id);
 
-        $this->Course->delete_course($course_id);
-        $this->delete_course = $this->Course->delete_course($course_id);
-        $this->load->view('courses_form/deleteconfirm');
 
+        $delete_course_array = array(
+            'delete_course' => $delete_course
+        );
+
+        $this->load->view('courses_form/deleteconfirm', $delete_course_array);
     }
 
     public function deleterecord($course_id)
     {
-        if($this->input->post('delete_single_record'))
-        {
-            $this->Course->execute_delete_course($course_id);
-            redirect(base_url());
-        }
+        $this->Course->execute_delete_course($course_id);
+        redirect(base_url());
     }
-
 }
 ?>

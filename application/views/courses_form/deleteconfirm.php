@@ -15,13 +15,12 @@
         </thead>
         <tbody>
             <?php
-            foreach($this->delete_course as $row)
-            {
+
                 echo '<tr>';
-                    echo '<td>' . $row->id . '</td>';
-                    echo '<td>' . $row->name . '</td>';
-                    echo '<td>' . $row->description . '</td>';
-                    echo '<td>' . $row->created_at . '</td>';
+                    echo '<td>' . $delete_course['id'] . '</td>';
+                    echo '<td>' . $delete_course['name'] . '</td>';
+                    echo '<td>' . $delete_course['description'] . '</td>';
+                    echo '<td>' . $delete_course['created_at'] . '</td>';
                 echo '</tr>';
                 echo '<tr>';
                     echo '<td colspan="2" class="no-border">'
@@ -31,13 +30,13 @@
                             </form>'
                     . '</td>';
                 echo '<td colspan="2" class="no-border">'
-                    . '<form action="'. base_url() . 'courses/deleterecord/' . $row->id . '" method="post">
+                    . '<form action="'. base_url() . 'courses/deleterecord/' . $delete_course['id'] . '" method="post">
                                 <input type="hidden" name="delete_single_record" value="delete_single_record" />
                                 <input type="submit" value="Yes, I want to delete this course!" />
                             </form>'
                     . '</td>';
                 echo '</tr>';
-            }
+
             ?>
         </tbody>
     </table>
